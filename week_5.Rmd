@@ -1,0 +1,24 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+1. A simple sample size calculation can be performed for binary proportion confidence intervals as follows. We bound the standard deviation estimate from above as \(\sqrt{\hat{p}(1 - \hat{p})} \leq 0.5\) to obtain the conservative confidence interval, \[\left( \hat{p} - z_{\alpha/2} \frac{0.5}{\sqrt{n}}, \hat{p} + z_{\alpha/2} \frac{0.5}{\sqrt{n}} \right).\] The half-width of a confidence interval is known as its margin of error and for the conservative confidence interval the margin of error does not depend on the proportion of “successes”. Thus we can compute a universal sample size for which a certain desired margin of error is reached.
+
+1. Compute the required sample sizes to obtain the margins of error of 0.01, 0.02 and 0.03 for a 95% conservative confidence interval.
+    
+    ```{r}
+      z_alpha <- 1.96
+      margin_of_errors <- c(0.01, 0.02, 0.03)  
+     (z_alpha * 0.5 / margin_of_errors)^2
+    ```
+  
+  1. Study how much the calculations in part i over-estimate the required sample sizes when the proportion of successes is small \(\hat{p} = 0.05\). That is, redo part i using the regular binary confidence interval in slide 4.6.
+    
+    \[\left( \hat{\pi} - z_{1-\alpha/2} \frac{\sqrt{\hat{\pi}(1-\hat{\pi})}}{\sqrt{n}}, \hat{\pi} + z_{1-\alpha/2} \frac{\sqrt{\hat{\pi}(1-\hat{\pi})}}{\sqrt{n}}  \right)\]
+    
+    ```{r}
+    
+    ````
+    
+1. A manufacturer claims that only 6% of their products are faulty. To investigate this, a customer picks a random sample of size \(n\) of products and observes the proportion of faulty ones to be \(\hat{p} = 0.09\). He tests the manufacturer’s claim using the asymptotic one-sample proportion test in slide 4.9. Is the p-value of the test smaller for sample size \(n = 100\) or \(n = 200\)?

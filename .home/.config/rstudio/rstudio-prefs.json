@@ -1,0 +1,10 @@
+{
+    "initial_working_directory": "~",
+    "code_completion_characters": 1,
+    "code_completion_delay": 50,
+    "posix_terminal_shell": "bash",
+    "editor_theme": "Pastel On Dark",
+    "server_editor_font_enabled": true,
+    "server_editor_font": "Menlo",
+    "editor_keybindings": "vim"
+}

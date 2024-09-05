@@ -1,0 +1,41 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+1. Assume that we have an iid. random sample \(x_1, \ldots , x_{1000}\) and we’d like to use the normal Q-Q plot to assess whether the sample came from a normal distibution. How do you expect the normal Q-Q plot to roughly look like (i.e. what general features do you expect it to have and why), if the true distribution of the data is
+
+    1. a normal distribution, 
+    
+    A straight line.
+    
+    1. a right-skew distribution,
+    
+    The left side of the plot would fall above the straight line.
+    
+    1. a left-skew distribution,
+    
+    The left side of the plot would fall below the straight line. 
+    
+    1. a bimodal distribution,
+    
+    The plot would have more turns as there would be more points where the "speed" at which the quantiles are gained change. Probably would look like an S
+    
+    
+    1. adistribution with light tails,
+    
+    Straight line at the center. ends below the line at left and above at right
+    
+    1. adistribution with heavy tails?
+    
+    Straight line at the center, ends above the line at left and below at right
+
+1. Recall the differences between the interpretations of the \(\chi^2\) homogeneity test and \(\chi^2\) test for independence. Come up with a practical situation where the collected data can be expressed as a 2-by-2 table and a related research question for which the correct interpretation is through
+  
+    1. the \(\chi^2\) homogeneity test,
+    
+    Test wheter different productionlines produce defects in the same distribution.
+    
+    1. the \(\chi^2\) test for independence.
+    
+    Test whether the color of a car is associated with the likelihood of getting into an accident.

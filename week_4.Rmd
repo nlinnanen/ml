@@ -1,0 +1,52 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+1.  Let $x_1, \ldots , x_n$ be a random sample (iid) from some
+    distribution $F_\theta$ with the unknown parameter $\theta$. Which
+    of the three one-sample tests ($t$-test, sign test or signed rank
+    test) would you use (and why!) to test whether the location
+    (expected value/median) of the data is equal to 1 if we know for
+    certain that the distribution $F_\theta$ is
+
+    1.  an exponential distribution with unknown rate parameter
+        $\theta$,
+        
+        Sign test, as the ditribution is not symmetric nor normal
+        
+    2.  a normal distribution with variance 2 and unknown expected value
+        $\theta$,
+        
+        t-test, as the distribution is normal
+        
+    3.  a Laplace distirbution with known scale parameter 5 and unknown
+        location parameter $\theta$,
+        
+        signed rank test as the dist is symmetric but not normal
+        
+    4.  a Poisson distirbution with unknown parameter $\theta$?
+    
+        sign test, as the ditribution is not symmetric nor normal
+    
+
+2.  The data set airmiles lists the passenger miles flown by commercial
+    airlines in the United States for each year from 1937 to 1960. To
+    inspect whether the yearly passenger miles equal 10000 on average, a
+    researcher performed a sign test to test the null hypothesis
+    $med_x = 10000$ on significance level 5% with the results shown
+    below and concluded that there is no evidence against the null
+    hypothesis. Do you agree with the researcher's conclusion? 
+    
+    ```{r}
+    airmiles
+    ```
+    
+    ```{r}
+    binom.test(sum(airmiles > 10000), length(airmiles))
+    ```
+
+P value is actually much greates than \alpha (0.05), so \H\_0 should not be rejected.

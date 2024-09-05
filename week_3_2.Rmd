@@ -1,0 +1,99 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+---
+title: "week_3"
+output: html_document
+date: "2024-01-22"
+---
+
+# Week 3
+
+## Theory
+
+In a classical article William Gosset, pseudonym Student (1908), exemplified his new testing procedure with a data set on the effectiveness of two sleeping drugs. The data consisted of ten differences between the additional sleeping hours due to the drugs (additional sleeping hours due to drug 1 minus additional sleeping hours due to drug 2). The differences are reproduced in the R code below.
+
+```{r}
+x <- c(1.2,2.4,1.3,1.3,0,1.0,1.8,0.8,4.6,1.4)
+```
+
+The observations are assumed to have been drawn independently from a Normal distribution.
+
+***Solution:***\
+
+a)  **Calculate a two-sided 99% confidence interval for the mean of X. Does the interval cover value 0?**
+
+```{r}
+alpha <- 0.01
+mean_x <- mean(x)
+n <- length(x)
+s <- sd(x)
+error_margin <- qt(1 - (alpha/2), df=n-1) * s / sqrt(n)  # alpha is the significance level
+lower_bound <- mean_x - error_margin
+upper_bound <- mean_x + error_margin
+```
+
+The interval does not cover the value 0.
+
+b)  **Let the null hypothesis be that the mean of the differences is 0. Interpret the null hypothesis in the context of Gosset's study.**\
+    \
+    The null hypothesis is that drug 1 is no better than drug 2\
+c)  **Test the null hypothesis that the mean of the differences is 0 at significance level 0.01. What do you infer?**
+
+```{r}
+t.test(x, mu = 0, alternative = "two.sided", conf.level = 0.99)
+```
+
+The null hypothesis is rejected, as the p-value is lower than the signigance level. The first drug is thus more effective than the second.\
+
+d)  **Explain in what sense the results in a) and c) are in tandem**\
+    \
+    Because of the duality that applies between tests and confidence intervals.
+
+## Exercise 1
+
+Consider the confidence interval for the expected value of the normal distribution on page 2.9 of the lecture notes. Describe what will(most likely) happen to the width of the confidence interval (does it get smaller, larger or stay the same?) if we,
+
+1.  Increase the sample size $n$.
+2.  Decrease the confidence level $100(1 - \alpha)$.
+3.  Increase the variance $\sigma^2$.
+4.  Decrease the expected value $\mu$.
+
+![](./confidence_interval.png)
+
+1.  Increasing the sample size decreases the margin of error, decreasing the interval width
+
+2.  With common sense the confidence interval gets smaller as the confidence level decreases
+
+3.  It gets wider, as the width of the entire distribution does
+
+4.  It stays the same, as the shape of the distribution is not affected
+
+## Exercise 2
+
+Consider the following four hypothesis testing scenarios. For each scenario, describe what the Type I error and Type II error mean in that particular context. Comment also on the possible consequences of the two errors in each case (which one of the errors is more "dangerous"?). For part d, come up with a typical hypothesis testing scenario from your own field of science.
+
+1.  A suspect is brought before a judge.\
+    H0: The suspect is innocent.\
+    H1: The suspect is guilty.
+
+Type I error: The innocent suspect is found guilty. The real cirminal stays free and an innocent person must suffer\
+Type II error: The guilty is found innocent. The criminal is not punished and might commit more crimes
+
+2.  A new experimental cancer treatment is compared to placebo.\
+    H0: The new treatment is no better than placebo.\
+    H1: The new treatment is better than placebo.
+
+Type I error: The not effective treatment is accepted. Patients are given an useless treatment\
+Type II error: The truly effective treatment is considered not effective. The effective treatment is not utilized
+
+3.  An automated security screening scans passengers at the airport.\
+    H0: The passenger is not carrying dangerous items.\
+    H1: The passenger is carrying dangerous items.
+
+Type I error: The non dangerous passenger is stopped\
+Type II error: The dangerous passenger is allowed to pass
+
+## Exercise 3
