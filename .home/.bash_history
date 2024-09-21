@@ -50,3 +50,15 @@ git stash
 git pull --rebase
 git status
 git pull
+cd ..
+git add .
+git push
+git lgo
+git log --one-line
+git log --oneline
+git add .
+git commit -m "Assignment 2 template"
+git push
+git pull
+git commit -a -m "Complete Assignment 2 part II"
+git push
